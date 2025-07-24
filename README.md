@@ -19,9 +19,9 @@ A simple complaint management system built with **Next.js**, **React**, **Node.j
 2. **Configure environment variables** in `.env.local`:
    ```
    DB_URL=your_mongodb_connection_string
-   JWT_SECRET=your_email_address
-   SENDGRID_API_KEY=your_email_password
-   SENDGRID_EMAIL_FROM=gmail
+   JWT_SECRET=your_jwt_secret_key
+   SENDGRID_API_KEY=your_api_key_for_sendgrid
+   SENDGRID_EMAIL_FROM=your_sendgrid_verified_email
    ```
 3. **Run the app**
    ```bash
