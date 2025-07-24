@@ -15,7 +15,7 @@ export function Button({ buttonText, onButtonClick }: ButtonProps) {
   return (
     <div>
         <button
-            className="bg-[#303030] text-[#a9e084] font-Pretendard font-medium w-full sm:w-auto px-6 sm:px-8 py-2.5 cursor-pointer rounded-[7px] transition hover:border-1 hover:text-[#303030] hover:bg-[#a9e084]"
+            className="bg-[#303030] text-[#a9e084] font-Pretendard font-medium w-full sm:w-auto px-6 sm:px-15 py-3 cursor-pointer rounded-[7px] transition hover:border-1 hover:text-[#303030] hover:bg-[#a9e084]"
             type="button"
             onClick={onButtonClick}
         >{buttonText}</button>  
