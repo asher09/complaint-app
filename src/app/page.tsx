@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button, Input } from './components/InputWButton';
 import axios from 'axios';
 
@@ -10,6 +11,7 @@ export default function ComplaintDashboard() {
   const [category, setCategory] = useState("Product");
   const [priority, setPriority] = useState("Medium");
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async () => {
     setMessage("");
@@ -37,7 +39,7 @@ export default function ComplaintDashboard() {
   return (
     <div className="min-h-screen bg-[#171717] p-8">
       <h1 className="text-2xl font-bold mb-6 text-center">Complaint Submission</h1>
-      <div className="max-w-md mx-auto border-1 border-[#a9e084] shadow shadow-gray p-6 rounded space-y-4">
+      <div className="max-w-md mx-auto shadow-md sm:rounded-xl bg-[#111111] p-6 rounded space-y-4">
         <div>
           <label className="block mb-1 font-semibold">Complain title</label>
           <Input
@@ -81,13 +83,29 @@ export default function ComplaintDashboard() {
             ))}
           </div>
         </div>
+        <div className="flex justify-center">
         <Button
           buttonText="Submit"
           onButtonClick={handleSubmit}
         />
+        </div>
         {message && (
           <div className="text-center text-sm mt-4">{message}</div>
         )}
+        <div className="flex gap-4 justify-center mt-6">
+          <button
+            className="bg-[#303030] cursor-pointer text-[#a9e084] px-6 py-2 rounded hover:bg-[#a9e084] hover:text-[#303030] transition"
+            onClick={() => router.push("/admin/signin")}
+          >
+            Admin Signin
+          </button>
+          <button
+            className="bg-[#303030] cursor-pointer text-[#a9e084] px-6 py-2 rounded hover:bg-[#a9e084] hover:text-[#303030] transition"
+            onClick={() => router.push("/admin/signup")}
+          >
+            Admin Signup
+          </button>
+        </div>
       </div>
     </div>
   );

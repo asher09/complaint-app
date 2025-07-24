@@ -3,6 +3,7 @@ import {Input, Button} from "../../components/InputWButton";
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 
 export default function AdminSigninPage () {
@@ -38,22 +39,23 @@ export default function AdminSigninPage () {
                 <h1 className="text-2xl font-bold text-center">Sign In</h1>
                 <Input 
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="email"
+                    placeholder="Email"
                 />
                 <Input 
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
 
                 />
-                <div className="justify-center flex" >
+                <div className="justify-center flex items-center gap-4">
                     <Button 
                         buttonText="Sign-In"
                         onButtonClick={Click}
                     />
+                    <Link href="/admin/signup">
+                        <p className="text-[#909090] cursor-pointer hover:underline">Don't have an Account?</p>
+                    </Link>
                 </div>
-                {msg && <div className="text-center text-sm mt-4">
-                            {msg}
-                        </div>}
+                {msg && <div className="text-center text-sm mt-4">{msg}</div>}
             </div>
            
         </div>
