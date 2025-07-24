@@ -7,7 +7,6 @@ import axios from 'axios';
 export default function ComplaintDashboard() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [email, setEmail] = useState("");
   const [category, setCategory] = useState("Product");
   const [priority, setPriority] = useState("Medium");
   const [message, setMessage] = useState("");
@@ -26,8 +25,12 @@ export default function ComplaintDashboard() {
       setDescription("");
       setCategory("Product");
       setPriority("Medium");
-    } catch (err: any) {
-      setMessage(err.response?.data?.error || "Failed to submit complaint.");
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        setMessage(err.response?.data?.error || "Failed to submit complaint.");
+      } else {
+        setMessage("Failed to submit complaint.");
+      }
     }
   };
 

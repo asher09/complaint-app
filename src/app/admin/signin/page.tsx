@@ -23,8 +23,12 @@ export default function AdminSigninPage () {
             } else {
                 setMsg("User not Exists")
             }
-        } catch (error: any) {
-            setMsg(error.response?.data?.error || "Signin failed!, Please try Again");
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                setMsg(error.response?.data?.error || "Signin failed!, Please try Again");
+            } else {
+                setMsg("Signin failed!, Please try Again");
+            }
         }
     };
 

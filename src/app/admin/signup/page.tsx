@@ -20,8 +20,12 @@ export default function AdminSigninPage() {
             });
             setMsg("Signup successful!");
             router.push('/admin/signin');
-        } catch (error: any) {
-            setMsg(error.response?.data?.error || "Signup failed!");
+        } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+                setMsg(error.response?.data?.error || "Signup failed!");
+            } else {
+                setMsg("Signup failed!");
+            }
         }
     };
 

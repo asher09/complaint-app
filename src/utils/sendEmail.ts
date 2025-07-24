@@ -27,8 +27,13 @@ export async function sendEmail({
   try {
     await sgMail.send(msg);
     console.log("Email sent successfully");
-  } catch (error: any) {
-    console.error("Error sending email", error?.response?.body || error);
+  } catch (error: unknown) {
+    if (error && typeof error === "object" && "response" in error) {
+      // @ts-expect-error: error.response may exist
+      console.error("Error sending email", error.response?.body || error);
+    } else {
+      console.error("Error sending email", error);
+    }
     throw new Error("Failed to send email");
   }
 }
