@@ -1,64 +1,58 @@
 # Complaint App
 
-A simple complaint management dashboard built with [Next.js](https://nextjs.org).  
-Admins can view, update, and delete complaints submitted by users.
+A simple complaint management system built with **Next.js**, **React**, **Node.js**, and **MongoDB**.
 
 ## Features
 
-- View all complaints in a table
-- Change the status of complaints (Pending, In Progress, Resolved)
-- Delete complaints from the dashboard
-- Mock data fallback for local development
+- Users can submit complaints (title, description, category, priority)
+- Admin dashboard to view, update status, and delete complaints
+- Email notifications for new complaints and status updates
+- Responsive design for mobile and desktop
 
 ## Getting Started
 
-First, install dependencies:
+1. **Install dependencies**
+   ```bash
+   cd complaint-app
+   npm install
+   ```
+2. **Configure environment variables** in `.env.local`:
+   ```
+   DB_URL=your_mongodb_connection_string
+   JWT_SECRET=your_email_address
+   SENDGRID_API_KEY=your_email_password
+   SENDGRID_EMAIL_FROM=gmail
+   ```
+3. **Run the app**
+   ```bash
+   npm run dev
+   ```
 
-```bash
-cd complaint-app
-npm install
-```
+## Usage
 
-Then, run the development server:
+- Users submit complaints via the home page form.
+- Admins manage complaints at `/admin/dashboard`.
 
-```bash
-npm run dev
-```
+## API Endpoints
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the app.
+- `POST /api/complaints` – Create complaint
+- `GET /api/complaints` – List complaints
+- `PUT /api/complaints/:id` – Update complaint
+- `DELETE /api/complaints/:id` – Delete complaint
 
-## Project Structure
+## Email Setup
 
-- `src/app/admin/dashboard/page.tsx` – Admin dashboard for managing complaints
-- `src/app/page.tsx` – Main user-facing page
-- `src/pages/api/complaints` – API route for complaints (customize as needed)
+- Uses NodeMailer. Configure SMTP/email credentials in `.env.local`.
 
-## Technologies Used
+## MongoDB
 
-- Next.js (App Router)
-- React
-- Axios (for API requests)
-- Tailwind CSS (for styling)
+- Requires a running MongoDB instance. Set `MONGODB_URL` in your `.env.local` file with your connection string.
 
-## How It Works
-
-- Complaints are fetched from `/api/complaints` and displayed in a table.
-- Admins can change the status of any complaint using a dropdown.
-- Click **Update All** to save all status changes to the database.
-- Click **Delete** to remove a complaint from the database.
-
-## Customization
-
-- To use mock data, update the `useEffect` in `page.tsx` as shown in the code comments.
-- You can extend the complaint model to include more fields as needed.
+---
 
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Learn Next.js](https://nextjs.org/learn)
-
-## Deploy
-
-Deploy easily on [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
----
+- [React Documentation](https://react.dev/)
+- [NodeMailer Documentation](https://nodemailer.com/about/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
