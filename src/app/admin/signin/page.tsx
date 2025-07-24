@@ -52,7 +52,7 @@ export default function AdminSigninPage () {
                         onButtonClick={Click}
                     />
                     <Link href="/admin/signup">
-                        <p className="text-[#909090] cursor-pointer hover:underline">Don't have an Account?</p>
+                        <p className="text-[#909090] cursor-pointer hover:underline">Dont have an Account?</p>
                     </Link>
                 </div>
                 {msg && <div className="text-center text-sm mt-4">{msg}</div>}
